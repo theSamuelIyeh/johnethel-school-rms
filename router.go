@@ -7,6 +7,11 @@ import (
 
 func setupRouter(app *fiber.App) {
 	api := app.Group("/api")
+	web := app.Group("/")
 
-	api.Get("/", controllers.IndexHandler)
+	web.Get("/", controllers.IndexController)
+	web.Get("/about", controllers.AboutController)
+	web.Get("/signup", controllers.SignupController)
+	web.Get("/login", controllers.LoginController)
+	api.Get("/", controllers.IndexApiController)
 }

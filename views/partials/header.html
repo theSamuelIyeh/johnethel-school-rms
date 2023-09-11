@@ -1,1 +1,24 @@
-<h1>this is header</h1>
+<header class="drop-shadow-lg">
+    <nav class="px-5 navbar bg-base-100">
+        <div class="navbar-start"><a class="btn btn-ghost normal-case text-xl" href="/">{% include "partials/logo.html" %}</a></div>
+        <ul class="invisible md:visible navbar-end gap-5">
+            <li class="link"><a href="/">Home</a></li>
+            <li class="link"><a href="/about">About</a></li>
+            <li class="link"><a href="/">Gallery</a></li>
+            <li class="btn"><a href="/login">Login</a></li>
+            <li class="btn"><a href="/signup">Sign up</a></li>
+        </ul>
+        <div class="dropdown dropdown-end md:hidden">
+            <label tabindex="0" class="m-1 btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </label>
+            <ul tabindex="0" class="p-2 shadow menu dropdown-content z-[10] bg-base-100 rounded-box w-52 mt-3 gap-1">
+                <li class="link"><a href="/">Home</a></li>
+                <li class="link"><a href="#about">About</a></li>
+                <li class="link"><a href="/">Gallery</a></li>
+                <li class="btn"><a href="/login">Login</a></li>
+                <li class="btn"><a href="/signup">Sign up</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
