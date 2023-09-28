@@ -1,0 +1,24 @@
+<header class="drop-shadow-lg">
+    <nav class="md:px-5 navbar bg-base-300 flex justify-between items-center">
+        <div class="flex"><a class="normal-case text-md md:text-xl" href="/">{% include "partials/logo.html" %}</a></div>
+        <ul class="hidden md:flex gap-5">
+            <li><a href="/" class="link hidden md:flex">Home</a></li>
+            <li><a href="/about" class="link hidden md:flex">About</a></li>
+            <li><a href="/" class="link hidden md:flex">Gallery</a></li>
+            <li><a href="/auth/login" class="btn hidden md:flex">Login</a></li>
+            <li><a href="/signup" class="btn hidden md:flex">Sign up</a></li>
+        </ul>
+        <div class="dropdown dropdown-end md:hidden">
+            <label tabindex="0" class="m-1 btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </label>
+            <ul tabindex="0" class="p-2 shadow menu dropdown-content z-[1] bg-base-300 rounded-box w-52 mt-3 gap-1">
+                <li><a href="/" class="link items-center justify-center">Home</a></li>
+                <li><a href="/about" class="link items-center justify-center">About</a></li>
+                <li><a href="/" class="link items-center justify-center">Gallery</a></li>
+                <li><a href="/login" class="btn justify-center">Login</a></li>
+                <li><a href="/signup" class="btn flex">Sign up</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>

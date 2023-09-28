@@ -1,0 +1,16 @@
+version: '3'
+tasks:
+
+  start:
+    deps: [tailwind, air]
+    output: 'group'
+
+  tailwind:
+    dir: tailwind
+    cmds:
+      - npm run dev
+    silent: true
+
+  air:
+    cmds:
+      - air

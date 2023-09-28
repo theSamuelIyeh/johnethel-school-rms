@@ -1,0 +1,31 @@
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content w-full">
+        <div class="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
+            <div class="card-body gap-5">
+                <div class="card-title text-center justify-center items-center"><a href="/">{% include "partials/logo.html" %}</a></div>
+                <div class="card-title justify-center items-center">PUPIL/STAFF LOGIN</div>
+                <form hx-post="/api/auth/login" hx-target="#error-message">
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">Admission Number</span>
+                    </label>
+                    <input type="text" name="admissionNo" placeholder="Admission Number" class="input input-bordered" />
+                </div>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">Password</span>
+                    </label>
+                    <input type="password" name="password" placeholder="password" class="input input-bordered" />
+                    <label class="label">
+                        <a href="/auth/parent/login" class="label-text-alt link link-hover">Not a pupil/staff? Parent Login</a>
+                    </label>
+                </div>
+                <div class="form-control mt-5">
+                    <button class="btn btn-primary">Login</button>
+                </div>
+                </form>
+                <div id="error-message" class="text-center text-error font-bold text-lg"></div>
+            </div>
+        </div>
+    </div>
+</div>

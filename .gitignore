@@ -1,2 +1,43 @@
-styling/node_modules/
+# Compiled binary files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Dependency directories
+/vendor/
+/go.sum
+/go.mod
+
+# IDE-specific files (e.g., JetBrains IDEs)
+.idea/
+.vscode/
+
+# Compiled output
+/bin/
+/release/
+
+# Logs and temporary files
+*.log
+*.out
+*.tmp
+
+# macOS-specific files
+.DS_Store
+
+# Compiled Go files
+*.test
+*.prof
+
+# Ignore environment file (e.g., .env) if used for local configuration
 .env
+
+# Ignore database files (SQLite or other)
+*.db
+
+# Node.js files (if using npm or yarn)
+node_modules/
+package-lock.json
+
+# Ignore temporary build directory used by Air
+/tmp/
