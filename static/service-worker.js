@@ -1,6 +1,7 @@
 const CACHE_NAME = 'my-pwa-cache-v1';
 const CACHE_FILES = [
   '/auth/login',
+  '/auth/parent/login',
   '/auth/signup',
   '/dashboard',
   '/css/styles.css',
