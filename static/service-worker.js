@@ -3,6 +3,7 @@ const CACHE_FILES = [
   '/auth/login',
   '/auth/parent/login',
   '/auth/signup',
+  '/resetpassword',
   '/dashboard',
   '/css/styles.css',
   '/js/dist_htmx.min.js',
