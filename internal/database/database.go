@@ -17,6 +17,7 @@ type Database interface {
 	StoreRefreshToken(token string, userId string, expTime time.Time) error
 	ClearRefreshToken(userId string) error
 	GetUserById(id string, role string) (*User, error)
+	ResetPassword(email_or_admission_no string, role string, password string, passwordhash string) (*User, error)
 }
 
 // database struct

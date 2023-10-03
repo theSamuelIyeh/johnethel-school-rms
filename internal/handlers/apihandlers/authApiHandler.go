@@ -148,3 +148,19 @@ func HandleLogoutApi(c *fiber.Ctx) error {
 	// c.Set("HX-Redirect", "/auth/login")
 	// return c.Status(fiber.StatusSeeOther).SendString("")
 }
+
+func ResetPassword(c *fiber.Ctx) error {
+	email := c.FormValue("email")
+	role := c.FormValue("role")
+	user, err := services.UserService.ResetPassword(email, role)
+	if err != nil {
+		return err
+	}
+	success, err := services.EmailService.SendResetPasswordEmail(user)
+	if err != nil {
+		return err
+	} else if !success {
+		return fmt.Errorf("error sending email")
+	}
+	return services.RedirectService.RedirectService(c, "/auth/login")
+}

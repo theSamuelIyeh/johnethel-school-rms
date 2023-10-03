@@ -31,6 +31,8 @@ func (db *DatabaseImpl) CheckForUser(admission_no_or_email string, role string) 
 		found, err = db.Engine.Table("users").Alias("u").Join("INNER", "staffs s", "s.user_id = u.id").Where("s.admission_no = ?", admission_no_or_email).Get(&user)
 	} else if role == "parent" {
 		found, err = db.Engine.Table("users").Alias("u").Join("INNER", "parents p", "p.user_id = u.id").Where("p.email = ?", admission_no_or_email).Get(&user)
+	} else if role == "superadmin" {
+		found, err = db.Engine.Table("users").Alias("u").Join("INNER", "superadmins s", "s.user_id = u.id").Where("s.email = ?", admission_no_or_email).Get(&user)
 	} else {
 		return nil, fmt.Errorf("invalid role")
 	}
@@ -87,6 +89,8 @@ func (db *DatabaseImpl) GetUserById(id string, role string) (*User, error) {
 		found, err = db.Engine.Table("users").Alias("u").Where("u.id = ?", id).Join("INNER", "staffs s", "s.user_id = u.id").Get(&user)
 	} else if role == "parent" {
 		found, err = db.Engine.Table("users").Alias("u").Where("u.id = ?", id).Join("INNER", "parents p", "p.user_id = u.id").Get(&user)
+	} else if role == "superadmin" {
+		found, err = db.Engine.Table("users").Alias("u").Where("u.id = ?", id).Join("INNER", "superadmins s", "s.user_id = u.id").Get(&user)
 	} else {
 		return nil, fmt.Errorf("invalid role")
 	}
@@ -94,6 +98,30 @@ func (db *DatabaseImpl) GetUserById(id string, role string) (*User, error) {
 		return nil, err
 	} else if !found {
 		return nil, fmt.Errorf("user not found")
+	}
+	return &user, nil
+}
+
+// reset password method
+func (db *DatabaseImpl) ResetPassword(email_or_admission_no string, role string, password string, passwordhash string) (*User, error) {
+	var user User
+	var affected int64
+	var err error
+	if role == "pupil" {
+		affected, err = db.Engine.Table("users").Alias("u").Join("INNER", "pupils p", "p.user_id = u.id").Where("p.admission_no = ?", email_or_admission_no).Update(User{User: models.User{ResetPassword: passwordhash, ResetPasswordRaw: password, ResetPasswordDone: false}})
+	} else if role == "staff" {
+		affected, err = db.Engine.Table("users").Alias("u").Join("INNER", "staffs s", "s.user_id = u.id").Where("s.addmission_no = ?", email_or_admission_no).Update(User{User: models.User{ResetPassword: passwordhash, ResetPasswordRaw: password, ResetPasswordDone: false}})
+	} else if role == "parent" {
+		affected, err = db.Engine.Table("users").Alias("u").Join("INNER", "parents p", "p.user_id = u.id").Where("p.email = ?", email_or_admission_no).Update(User{User: models.User{ResetPassword: passwordhash, ResetPasswordRaw: password, ResetPasswordDone: false}})
+	} else if role == "superadmin" {
+		affected, err = db.Engine.Table("users").Alias("u").Join("INNER", "superadmins s", "s.user_id = u.id").Where("s.email = ?", email_or_admission_no).Update(User{User: models.User{ResetPassword: passwordhash, ResetPasswordRaw: password, ResetPasswordDone: false}})
+	} else {
+		return nil, fmt.Errorf("invalid role")
+	}
+	if err != nil {
+		return nil, err
+	} else if affected == 0 {
+		return nil, fmt.Errorf("couldn't reset password")
 	}
 	return &user, nil
 }
