@@ -1,6 +1,6 @@
 {
-    "theme_color": "#3588f6",
-    "background_color": "#3a35f6",
+    "theme_color": "#1e3a8a",
+    "background_color": "#1e3a8a",
     "display": "standalone",
     "scope": "/",
     "start_url": "/auth/login",
