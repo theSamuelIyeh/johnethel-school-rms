@@ -1,0 +1,64 @@
+package fragments
+
+import (
+	"github.com/theSamuelIyeh/johnethel-school-rms/internals/database"
+	"fmt"
+	"strings"
+	"github.com/theSamuelIyeh/johnethel-school-rms/views/partials"
+)
+
+templ StudentsTableBody(body []database.GetAllStudentRow, rowCount, successMsg string) {
+	// <template rowCount={ rowCount } id="table-body">
+	for _, row := range body {
+		<tbody x-data={ "{ UserForm: false }" }>
+			<tr class="table-row hover:bg-surface-primary">
+				<td class="px-4 py-2 text-text table-cell border border-border-default">{ row.FirstName }</td>
+				<td class="px-4 py-2 text-text table-cell border border-border-default">{ row.MiddleName }</td>
+				<td class="px-4 py-2 text-text table-cell border border-border-default">{ row.LastName }</td>
+				<td class="px-4 py-2 text-text table-cell border border-border-default">{ strings.Title(fmt.Sprintf("%v", row.AdmissionNo)) }</td>
+				<td class="px-4 py-2 text-text table-cell border border-border-default">{ strings.Title(fmt.Sprintf("%v", row.Gender)) }</td>
+				<td class="px-4 py-2 text-text table-cell border border-border-default">{ strings.Title(fmt.Sprintf("%v", row.PasswordChange)) }</td>
+				<td class="px-4 py-2 text-text table-cell border border-border-default">{ strings.Title(fmt.Sprintf("%v", row.Active)) }</td>
+				<td class="px-4 py-2 text-text table-cell border border-border-default">{ fmt.Sprintf("%v", row.CurrentClass) }</td>
+				<td class="px-4 py-2 text-text table-cell border border-border-default">{ partials.ConvertDate(fmt.Sprintf("%v", row.JoiningDate)) }</td>
+				<td class="px-4 py-2 text-text table-cell border border-border-default">
+					@partials.OrdinaryPrimaryBtn(templ.Attributes{"@click": "UserForm = !UserForm"}) {
+						View
+					}
+				</td>
+				<td class="px-4 py-2 text-text table-cell border border-border-default" x-bind:colspan="columns">
+					@partials.OrdinaryPrimaryBtn(templ.Attributes{"@click": "UserForm = !UserForm"}) {
+						View
+					}
+				</td>
+			</tr>
+			<tr x-show={ "UserForm" } class="bg-surface-secondary table-row" id={ "UserForm" } x-data={ "{ UpdateForm: false }" }>
+				<td class="w-full py-6 px-8" x-bind:colspan="columns">
+					<form class="w-full">
+						<div class="flex justify-between gap-14">
+							<div class="flex justify-between flex-wrap">
+								@partials.LabelInput("First Name", templ.Attributes{"value": row.FirstName})
+							</div>
+							<div class="flex-grow mx-3 my-1">
+								<img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" class="h-full w-full object-cover"/>
+							</div>
+						</div>
+						<div class="mx-3 mt-4 mb-2 flex justify-end items-center gap-4">
+							@partials.OrdinaryPrimaryBtn(templ.Attributes{"_": ""}) {
+								Edit
+							}
+							@partials.OrdinaryErrorBtn(templ.Attributes{"_": ""}) {
+								Cancel
+							}
+							@partials.OrdinarySuccessBtn(templ.Attributes{"_": ""}) {
+								Update
+							}
+						</div>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	}
+	// </template>
+	@SuccessMessageComponent(successMsg)
+}

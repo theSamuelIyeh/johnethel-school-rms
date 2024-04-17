@@ -1,0 +1,100 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --surface-default: 246, 247, 247;
+  --surface-primary: 237, 238, 239;
+  --surface-secondary: 226, 227, 230;
+  --surface-tertiary: 199, 202, 207;
+  --surface-brand: 28, 109, 231;
+  --surface-accent: ;
+  --surface-invert: 31, 43, 61;
+  --surface-warning: 254, 248, 233;
+  --surface-error: 254, 233, 233;
+  --surface-success: 233, 254, 235;
+
+  --text-default: 31, 43, 61;
+  --text-primary: 31, 43, 61;
+  --text-secondary: 42, 54, 71;
+  --text-tertiary: 56, 66, 82;
+  --text-brand: 251, 251, 251;
+  --text-accent: 251, 251, 251;
+  --text-invert: 199, 202, 207;
+  --text-warning: 149, 113, 23;
+  --text-error: 148, 23, 23;
+  --text-success: 23, 149, 35;
+
+  --border-default: 186, 189, 195;
+  --border-primary: 174, 179, 185;
+  --border-secondary: 161, 166, 174;
+  --border-tertiary: 147, 153, 162;
+  --border-brand: 28, 109, 231;
+  --border-accent: ;
+  --border-invert: 107, 115, 127;
+  --border-warning: 244, 186, 38;
+  --border-error: 244, 38, 38;
+  --border-success: 38, 244, 58;
+}
+
+:root:has(input.theme-controller[value=myDarkTheme]:checked) {
+  --surface-default: 31, 43, 61;
+  --surface-primary: 56, 66, 82;
+  --surface-secondary: 71, 81, 96;
+  --surface-tertiary: 83, 92, 106;
+  --surface-brand: 67, 134, 235;
+  --surface-accent: ;
+  --surface-invert: 246, 247, 247;
+  --surface-warning: 244, 186, 38;
+  --surface-error: 244, 38, 38;
+  --surface-success: 38, 244, 58;
+
+  --text-default: 226, 227, 230;
+  --text-primary: 226, 227, 230;
+  --text-secondary: 199, 202, 207;
+  --text-tertiary: 186, 189, 195;
+  --text-brand: 237, 238, 239;
+  --text-accent: 237, 238, 239;
+  --text-invert: 42, 54, 71;
+  --text-warning: 149, 113, 23;
+  --text-error: 149, 23, 23;
+  --text-success: 23, 149, 35;
+
+  --border-default: 134, 141, 150;
+  --border-primary: 121, 128, 139;
+  --border-secondary: 107, 115, 127;
+  --border-tertiary: 96, 104, 117;
+  --border-brand: 67, 134, 235;
+  --border-accent: ;
+  --border-invert: 186, 189, 195;
+  --border-warning: 149, 113, 23;
+  --border-error: 149, 23, 23;
+  --border-success: 23, 149, 35;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+.htmx-indicator,
+.htmx-indicator2 {
+  display: none;
+}
+
+.htmx-request .htmx-indicator,
+.htmx-request .htmx-indicator2 {
+  display: inline-flex;
+}
+
+.htmx-request .htmx-indicator-name {
+  display: none;
+}
+
+.htmx-request.htmx-indicator-name {
+  display: none;
+}
+
+.htmx-request.htmx-indicator,
+.htmx-request.htmx-indicator2 {
+  display: inline-flex;
+}

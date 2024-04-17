@@ -1,0 +1,16 @@
+package pages
+
+import (
+	"github.com/theSamuelIyeh/johnethel-school-rms/views/partials"
+)
+
+templ DashboardStudentsComponent(tableHeaders []string) {
+	<div class="" hx-get="/students/all/20/1" hx-target="#table-body" hx-trigger="load" hx-swap="outerHTML" x-on:htmx:after-swap.camel="updateRowCount($event)">
+		@partials.Header1(templ.Attributes{"x-html": "'<span class=\"font-normal\">All </span>' +" + "'Users'"})
+		@partials.InnerDashboardHeader()
+		<div id="create-user-form"></div>
+		<div class="w-full overflow-x-auto mt-4">
+			@partials.Table(tableHeaders)
+		</div>
+	</div>
+}

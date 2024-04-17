@@ -1,0 +1,13 @@
+package fragments
+
+import (
+	"github.com/theSamuelIyeh/johnethel-school-rms/views/partials"
+)
+
+templ ConfirmEmailSentComponent() {
+	<div class="flex justify-center items-center gap-5">
+		@partials.Header2(templ.Attributes{"x-html": "'Password Reset Request Sent'"})
+		@partials.Body(templ.Attributes{"x-html": "Pls inform the admin to complete the password reset."})
+		<a name="confirm-email-component-trigger" class="link link-primary self-start" hx-get="/auth/login" hx-target="#forgot-password-form" hx-push-url="true" hx-swap="outerHTML">Back to Login</a>
+	</div>
+}

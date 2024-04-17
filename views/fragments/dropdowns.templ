@@ -1,0 +1,30 @@
+package fragments
+
+import (
+	"github.com/theSamuelIyeh/johnethel-school-rms/internals/database"
+	"github.com/theSamuelIyeh/johnethel-school-rms/views/partials"
+)
+
+templ AdminTermDropdown(terms []database.GetAllTermsRow) {
+	<select class="select select-bordered w-full max-w-xs mr-4 shadow rounded-box bg-surface-primary">
+		for index, term := range terms {
+			if index == 0 {
+				<option value={ partials.ParseId(term.ID) } x-text={ term.DisplayName.(string) } selected="true"></option>
+			} else {
+				<option value={ partials.ParseId(term.ID) } x-text={ term.DisplayName.(string) } selected="false"></option>
+			}
+		}
+	</select>
+}
+
+templ TermDropdown(terms []database.GetAllUnlockedTermsRow) {
+	<select class="select select-bordered w-full max-w-xs mr-4 shadow rounded-box bg-surface-primary">
+		for index, term := range terms {
+			if index == 0 {
+				<option value={ partials.ParseId(term.ID) } x-text={ term.DisplayName.(string) } selected="true"></option>
+			} else {
+				<option value={ partials.ParseId(term.ID) } x-text={ term.DisplayName.(string) } selected="false"></option>
+			}
+		}
+	</select>
+}

@@ -1,0 +1,14 @@
+package pages
+
+import (
+	"github.com/theSamuelIyeh/johnethel-school-rms/views/partials"
+)
+
+templ DashboardHomeComponent() {
+	<div class="text-text-default bg-surface-default">
+		@partials.Header1(templ.Attributes{"x-html": "'<span class=\"font-normal\">Welcome, </span>' +" + "userName"})
+		<div class="w-full overflow-x-auto">
+			// @table()
+		</div>
+	</div>
+}

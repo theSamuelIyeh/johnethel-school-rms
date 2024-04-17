@@ -1,0 +1,19 @@
+package partials
+
+import (
+	"fmt"
+)
+
+templ Table(tableHeaders []string) {
+	<table id="table" class="w-full border-collapse border border-border-default rounded table bg-surface-default" x-data={ " { columns: " + fmt.Sprintf("%v", len(tableHeaders)) + " }" }>
+		<thead class="table-header-group">
+			<tr class="table-row hover:bg-surface-secondary">
+				for _, header := range tableHeaders {
+					<th class="px-4 py-2 text-text bg-surface-default table-cell border border-border-default">{ header }</th>
+				}
+			</tr>
+		</thead>
+		<tbody class="table-row-group" id="table-body"></tbody>
+	</table>
+	@DashboardFooter()
+}

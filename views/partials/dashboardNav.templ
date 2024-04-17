@@ -1,0 +1,36 @@
+package partials
+
+// dashboard header component
+templ DashboardNav() {
+	<div class="fixed bg-surface-default top-0 left-16 w-[calc(100%-4rem)] px-4 z-30 border-b border-b-border-default h-[68px] text-text-default">
+		<div class="navbar">
+			<div class="flex-1">
+				@LogoName()
+			</div>
+			<div class="flex-none mr-4">
+				<template x-if="role == 'staff' || role == 'accountant' || role == 'student'">
+					<select class="select select-bordered w-full max-w-xs mr-4 shadow rounded-box bg-surface-primary" hx-get="/terms/nil" hx-trigger="load" hx-swap="outerHTML"></select>
+				</template>
+				@Header3(templ.Attributes{"x-html": "'<span class=\"font-normal\">Welcome, </span>' + userName + '<span class=\"font-normal\"> (' + role + ')</span>'"})
+				<div class="dropdown dropdown-end mr-4">
+					@avatar("https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg")
+					<ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 bg-surface-primary">
+						<li class="hover:bg-surface-default rounded-md">
+							<a class="justify-between">
+								Profile
+								<span class="badge bg-surface-primary">New</span>
+							</a>
+						</li>
+						<li class="hover:bg-surface-default rounded-md"><a>Settings</a></li>
+						<li class="hover:bg-surface-default rounded-md">
+							<a hx-post="/auth/logout" hx-disabled-elt="this">
+								Logout<span class="loading loading-spinner htmx-indicator ml-2"></span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				@ToggleTheme()
+			</div>
+		</div>
+	</div>
+}

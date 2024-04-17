@@ -1,0 +1,23 @@
+package partials
+
+import (
+	"github.com/iancoleman/strcase"
+)
+
+templ sideBarBtn(name string) {
+	<a
+		class="justify-start items-center py-4 px-[18px] w-full h-fit inline-flex transition-all bg-transparent hover:!bg-surface-tertiary flex-nowrap gap-2' cursor-pointer"
+		:class={ "(component == 'dashboard-" + strcase.ToKebab(name) + "' ? '!bg-surface-secondary' : '')" }
+		rel="ugc"
+		hx-get={ "/dashboard/" + strcase.ToKebab(name) }
+		hx-target="#dashboard-container"
+		hx-push-url="true"
+		name={ strcase.ToKebab(name) + "-component-trigger" }
+		@click={ "component = 'dashboard-" + strcase.ToKebab(name) + "'" }
+		hx-indicator="#indicator"
+	>
+		<!--convert svg to image tag and pass in the url -->
+		{ children... }
+		<span class="text-sm ml-3 group-hover:block hidden text-nowrap font-medium">{ name }</span>
+	</a>
+}

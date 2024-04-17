@@ -1,0 +1,33 @@
+package pages
+
+import (
+	"github.com/theSamuelIyeh/johnethel-school-rms/views/partials"
+)
+
+templ DashboardStaffComponent(tableHeaders []string) {
+	<div class="">
+		@partials.Header1(templ.Attributes{"x-html": "'<span class=\"font-normal\">All </span>' +" + "'Users'"})
+		<div class="navbar border-y border-y-border-default my-2">
+			<div class="flex-1">
+				<div class="form-control">
+					<input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto bg-surface-default"/>
+				</div>
+			</div>
+			<div class="flex-1 gap-2 justify-end">
+				<select class="select select-bordered w-full max-w-xs mr-4 shadow rounded-box bg-surface-primary" hx-post="/staff/all" hx-trigger="load changed delay:1s" hx-target="#table-body" name="role" hx-swap="outerHTML">
+					<option selected class="hover:bg-surface-default rounded-md">All</option>
+					<option class="hover:bg-surface-default rounded-md">Admins</option>
+					<option class="hover:bg-surface-default rounded-md">Teachers</option>
+					<option class="hover:bg-surface-default rounded-md">Accountants</option>
+				</select>
+				@partials.PrimaryBtn(templ.Attributes{"hx-get": "/staffs/create"}) {
+					Create User
+				}
+			</div>
+		</div>
+		<div id="create-user-form"></div>
+		<div class="w-full overflow-x-auto mt-4">
+			@partials.Table(tableHeaders)
+		</div>
+	</div>
+}

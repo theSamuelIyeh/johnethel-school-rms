@@ -1,0 +1,15 @@
+package partials
+
+templ Hero() {
+	<div class="hero min-h-screen bg-primary">
+		<div class="hero-content text-center container m-auto">
+			<div class="max-w-md">
+				<h1 class="text-5xl font-bold">Hello there</h1>
+				<p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+				@PrimaryBtn(templ.Attributes{"hx-get": "/"}) {
+					Enroll Now
+				}
+			</div>
+		</div>
+	</div>
+}

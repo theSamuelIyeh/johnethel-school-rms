@@ -1,0 +1,82 @@
+package partials
+
+templ PrimaryBtn(attrs templ.Attributes) {
+	<button
+		class={ "cursor-pointer group relative inline-block text-sm font-semibold text-text-brand focus:outline-none disabled:opacity-50 mx-3 my-1" }
+		hx-boost="true"
+		{ attrs... }
+	>
+		<span class="transition-opacity absolute inset-0 border border-border-brand group-active:border-border-brand rounded"></span>
+		<span
+			class="transition-all rounded block border border-border-brand bg-surface-brand px-8 py-2 active:border-border-brand active:bg-surface-brand group-hover:-translate-x-1 group-hover:-translate-y-1"
+		>
+			<span class="loading-spinner loading htmx-indicator"></span>
+			<span class="htmx-indicator-name">
+				{ children... }
+			</span>
+		</span>
+	</button>
+}
+
+templ SuccessBtn(attrs templ.Attributes) {
+	<button
+		class="cursor-pointer group relative inline-block text-sm font-semibold text-text-success focus:outline-none disabled:opacity-50 mx-3 my-1"
+		hx-boost="true"
+		{ attrs... }
+	>
+		<span class="transition-opacity absolute inset-0 border border-border-success group-active:border-border-success rounded"></span>
+		<span
+			class="transition-all rounded block border border-border-success bg-surface-brand px-8 py-2 active:border-border-success active:bg-surface-success group-hover:-translate-x-1 group-hover:-translate-y-1"
+		>
+			<span class="loading-spinner loading htmx-indicator"></span>
+			<span class="htmx-indicator-name">
+				{ children... }
+			</span>
+		</span>
+	</button>
+}
+
+templ ErrorBtn(attrs templ.Attributes) {
+	<button
+		class="cursor-pointer group relative inline-block text-sm font-semibold text-text-error focus:outline-none disabled:opacity-50 mx-3 my-1"
+		hx-boost="true"
+		{ attrs... }
+	>
+		<span class="transition-opacity absolute inset-0 border border-border-error group-active:border-border-error rounded"></span>
+		<span
+			class="transition-all rounded block border border-border-error bg-surface-brand px-8 py-2 active:border-border-error active:bg-surface-error group-hover:-translate-x-1 group-hover:-translate-y-1"
+		>
+			<span class="loading-spinner loading htmx-indicator"></span>
+			<span class="htmx-indicator-name">
+				{ children... }
+			</span>
+		</span>
+	</button>
+}
+
+templ OrdinaryPrimaryBtn(attrs templ.Attributes) {
+	<button class="btn bg-surface-brand text-text-brand hover:bg-surface-brand border-none" { attrs... }>
+		<span class="loading-spinner loading htmx-indicator"></span>
+		<span class="htmx-indicator-name">
+			{ children... }
+		</span>
+	</button>
+}
+
+templ OrdinarySuccessBtn(attrs templ.Attributes) {
+	<button class="btn bg-surface-success text-text-success hover:bg-surface-success border-none" { attrs... }>
+		<span class="loading-spinner loading htmx-indicator"></span>
+		<span class="htmx-indicator-name">
+			{ children... }
+		</span>
+	</button>
+}
+
+templ OrdinaryErrorBtn(attrs templ.Attributes) {
+	<button class="btn bg-surface-error text-text-error hover:bg-surface-error border-none" { attrs... }>
+		<span class="loading-spinner loading htmx-indicator"></span>
+		<span class="htmx-indicator-name">
+			{ children... }
+		</span>
+	</button>
+}

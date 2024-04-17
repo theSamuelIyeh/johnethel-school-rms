@@ -1,0 +1,11 @@
+package partials
+
+templ Link(url, name string) {
+	<a class="text-text-default transition-color hover:text-surface-brand hover:bg-transparent hover:underline hover:underline-offset-4 text-lg font-medium" hx-get={ url } hx-target="body" hx-push-url="true">{ name }</a>
+}
+
+templ OrdinaryLink(attrs templ.Attributes) {
+	<a class="link link-primary self-start" { attrs... }>
+		{ children... }
+	</a>
+}

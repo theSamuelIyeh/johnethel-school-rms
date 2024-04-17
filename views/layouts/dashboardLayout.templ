@@ -1,0 +1,53 @@
+package layouts
+
+import (
+	"github.com/theSamuelIyeh/johnethel-school-rms/views/partials"
+)
+
+templ DashboardLayout(page templ.Component, title, theme, role, userName, activeComponent, avatar string) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<title>{ title }</title>
+			<link rel="icon" type="image/svg" href="/static/img/darklogo-01.svg"/>
+			<link rel="preconnect" href="https://fonts.googleapis.com"/>
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"/>
+			<link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+			<link rel="stylesheet" type="text/css" href="/static/css/tailwind.css"/>
+			<script src="/static/js/htmx@1.9.10.min.js"></script>
+			<script src="/static/js/response-targets.js"></script>
+			<script defer src="/static/js/alpinejs@3.x.x.min.js"></script>
+		</head>
+		<body
+			hx-ext="response-targets"
+			x-data={ "{ theme: " + theme + " }" }
+			x-cloak
+			x-init="
+    			if (!document.cookie.includes('theme')) {
+        			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            			theme = true;
+            			document.cookie = 'theme=Bearer true;path=/';
+        			} else {
+						theme = false;
+            			document.cookie = 'theme=Bearer false;path=/';
+        			}
+    			}; htmx.config.useTemplateFragments = true;"
+		>
+			<div id="msgPopup"></div>
+			<div x-data={ "{ component: '" + activeComponent + "', role: '" + role + "', userName: '" + userName + "', avatar: '" + avatar + "', limit: 20, page: 1, rowCount: 0, updateRowCount: function(event) {const swappedElement = event.target; console.log(swappedElement)} }" } class="bg-surface-default text-text-default h-screen flex flex-col">
+				<div id="indicator" class="absolute top-0 left-0 bottom-0 right-0 bg-surface-default z-10 flex justify-center items-center htmx-indicator2">
+					<span class="loading loading-spinner loading-lg"></span>
+				</div>
+				@partials.DashboardNav()
+				@partials.SideBar()
+				<div id="dashboard-container" class="ml-16 mt-[68px] mb-16 p-12 overflow-auto">
+					@page
+					// @DashboardHomeComponent(content)
+				</div>
+			</div>
+		</body>
+	</html>
+}

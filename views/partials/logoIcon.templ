@@ -1,0 +1,24 @@
+package partials
+
+import (
+	"github.com/theSamuelIyeh/johnethel-school-rms/views/svg"
+)
+
+templ Logo() {
+	<template x-if="theme == true">
+		<a
+			class="transition flex items-center justify-center w-auto h-auto"
+			href="/"
+		>
+			@svg.DarkLogo()
+		</a>
+	</template>
+	<template x-if="theme == false">
+		<a
+			class="transition flex items-center justify-center w-auto h-auto"
+			href="/"
+		>
+			@svg.LightLogo()
+		</a>
+	</template>
+}

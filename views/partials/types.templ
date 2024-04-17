@@ -1,0 +1,29 @@
+package partials
+
+// header 1
+templ Header1(attrs templ.Attributes) {
+	<h1 class="text-3xl font-bold px-4 py-2" { attrs... }>
+		{ children... }
+	</h1>
+}
+
+// header 2
+templ Header2(attrs templ.Attributes) {
+	<h2 class="text-2xl font-medium px-4 py-2" { attrs... }>
+		{ children... }
+	</h2>
+}
+
+// header 3
+templ Header3(attrs templ.Attributes) {
+	<h3 class="text-xl font-bold px-4 py-2" { attrs... }>
+		{ children... }
+	</h3>
+}
+
+// body
+templ Body(attrs templ.Attributes) {
+	<p class="text-base font-normal px-4 py-2 whitespace-nowrap" { attrs... }>
+		{ children... }
+	</p>
+}

@@ -1,0 +1,13 @@
+package pages
+
+import (
+	"github.com/theSamuelIyeh/johnethel-school-rms/views/partials"
+)
+
+templ IndexPage(title string) {
+	<div class="bg-surface-default text-text-default">
+		<title>{ title }</title>
+		@partials.SiteNav()
+		@partials.Hero()
+	</div>
+}
